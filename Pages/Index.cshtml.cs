@@ -13,12 +13,11 @@ public class IndexModel : PageModel
     private readonly ILogger<IndexModel> _logger;
 
     public IndexModel(ILogger<IndexModel> logger) {
-        FormValue = new();
         _logger = logger;
+        FormValue = new();
     }
 
     public void OnGet() {
-
     }
     public IActionResult OnPost() {
         if (!TryValidateModel(FormValue)) {
@@ -33,4 +32,7 @@ public class InputValue {
     // 検証の対象としない!
     [ValidateNever]
     public string Message { get; set; } = null!;
+    public InputValue() {
+        Person = new();
+    }
 }
